@@ -16,7 +16,6 @@ import * as config from "./config";
 import * as downloadclient from "./downloadclient";
 import * as importlists from "./importlists";
 import * as indexers from "./indexers";
-import * as languages from "./languages";
 import * as mediamanagement from "./mediamanagement";
 import * as metadata from "./metadata";
 import * as movies from "./movies";
@@ -31,7 +30,6 @@ export {
     downloadclient,
     importlists,
     indexers,
-    languages,
     mediamanagement,
     metadata,
     movies,

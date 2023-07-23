@@ -112,8 +112,6 @@
             "radarr:Indexers/getIndexers:getIndexers": "radarr_indexers",
             "radarr:Indexers/getRestriction:getRestriction": "radarr_restriction",
             "radarr:Indexers/getRestrictions:getRestrictions": "radarr_restrictions",
-            "radarr:Languages/getLanguage:getLanguage": "radarr_language",
-            "radarr:Languages/getLanguages:getLanguages": "radarr_languages",
             "radarr:MediaManagement/getMediaManagement:getMediaManagement": "radarr_media_management",
             "radarr:MediaManagement/getNaming:getNaming": "radarr_naming",
             "radarr:MediaManagement/getRootFolder:getRootFolder": "radarr_root_folder",
@@ -139,6 +137,8 @@
             "radarr:Profiles/getCustomFormats:getCustomFormats": "radarr_custom_formats",
             "radarr:Profiles/getDelayProfile:getDelayProfile": "radarr_delay_profile",
             "radarr:Profiles/getDelayProfiles:getDelayProfiles": "radarr_delay_profiles",
+            "radarr:Profiles/getLanguage:getLanguage": "radarr_language",
+            "radarr:Profiles/getLanguages:getLanguages": "radarr_languages",
             "radarr:Profiles/getQuality:getQuality": "radarr_quality",
             "radarr:Profiles/getQualityDefinition:getQualityDefinition": "radarr_quality_definition",
             "radarr:Profiles/getQualityDefinitions:getQualityDefinitions": "radarr_quality_definitions",
@@ -1003,12 +1003,6 @@
                 "seedRatio": "seed_ratio",
                 "seedTime": "seed_time"
             },
-            "radarr:Languages/getLanguage:getLanguage": {
-                "nameLower": "name_lower"
-            },
-            "radarr:Languages/getLanguagesLanguage:getLanguagesLanguage": {
-                "nameLower": "name_lower"
-            },
             "radarr:MediaManagement/getMediaManagement:getMediaManagement": {
                 "autoRenameFolders": "auto_rename_folders",
                 "autoUnmonitorPreviouslyDownloadedMovies": "auto_unmonitor_previously_downloaded_movies",
@@ -1686,6 +1680,12 @@
                 "preferredProtocol": "preferred_protocol",
                 "torrentDelay": "torrent_delay",
                 "usenetDelay": "usenet_delay"
+            },
+            "radarr:Profiles/getLanguage:getLanguage": {
+                "nameLower": "name_lower"
+            },
+            "radarr:Profiles/getLanguagesLanguage:getLanguagesLanguage": {
+                "nameLower": "name_lower"
             },
             "radarr:Profiles/getQualityDefinition:getQualityDefinition": {
                 "maxSize": "max_size",

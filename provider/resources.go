@@ -39,7 +39,6 @@ const (
 	modDownloadClients = "DownloadClient"
 	modImportLists     = "ImportLists"
 	modIndexers        = "Indexers"
-	modLanguages       = "Languages"
 	modMediaManagement = "MediaManagement"
 	modMetadata        = "Metadata"
 	modMovies          = "Movies"
@@ -243,9 +242,6 @@ func Provider() tfbridge.ProviderInfo {
 			"radarr_restriction":    {Tok: makeDataSource(modIndexers, "radarr_restriction")},
 			"radarr_restrictions":   {Tok: makeDataSource(modIndexers, "radarr_restrictions")},
 
-			"radarr_language":  {Tok: makeDataSource(modLanguages, "radarr_language")},
-			"radarr_languages": {Tok: makeDataSource(modLanguages, "radarr_languages")},
-
 			"radarr_media_management": {Tok: makeDataSource(modMediaManagement, "radarr_media_management")},
 			"radarr_naming":           {Tok: makeDataSource(modMediaManagement, "radarr_naming")},
 			"radarr_root_folder":      {Tok: makeDataSource(modMediaManagement, "radarr_root_folder")},
@@ -275,6 +271,8 @@ func Provider() tfbridge.ProviderInfo {
 			"radarr_custom_formats":                           {Tok: makeDataSource(modProfiles, "radarr_custom_formats")},
 			"radarr_delay_profile":                            {Tok: makeDataSource(modProfiles, "radarr_delay_profile")},
 			"radarr_delay_profiles":                           {Tok: makeDataSource(modProfiles, "radarr_delay_profiles")},
+			"radarr_language":                                 {Tok: makeDataSource(modProfiles, "radarr_language")},
+			"radarr_languages":                                {Tok: makeDataSource(modProfiles, "radarr_languages")},
 			"radarr_quality":                                  {Tok: makeDataSource(modProfiles, "radarr_quality")},
 			"radarr_quality_definition":                       {Tok: makeDataSource(modProfiles, "radarr_quality_definition")},
 			"radarr_quality_definitions":                      {Tok: makeDataSource(modProfiles, "radarr_quality_definitions")},

@@ -15,13 +15,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@pulumi/radarr";
  *
- * const example = radarr.Languages.getLanguages({});
+ * const example = radarr.Profiles.getLanguages({});
  * ```
  */
 export function getLanguages(opts?: pulumi.InvokeOptions): Promise<GetLanguagesResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("radarr:Languages/getLanguages:getLanguages", {
+    return pulumi.runtime.invoke("radarr:Profiles/getLanguages:getLanguages", {
     }, opts);
 }
 
@@ -36,5 +36,5 @@ export interface GetLanguagesResult {
     /**
      * Language list.
      */
-    readonly languages: outputs.Languages.GetLanguagesLanguage[];
+    readonly languages: outputs.Profiles.GetLanguagesLanguage[];
 }
