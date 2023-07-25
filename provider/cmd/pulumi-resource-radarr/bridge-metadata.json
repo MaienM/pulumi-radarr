@@ -1,27 +1,27 @@
 {
     "renames": {
         "resources": {
-            "radarr:DownloadClient/downloadClient:DownloadClient": "radarr_download_client",
-            "radarr:DownloadClient/downloadClientAria2:DownloadClientAria2": "radarr_download_client_aria2",
-            "radarr:DownloadClient/downloadClientConfig:DownloadClientConfig": "radarr_download_client_config",
-            "radarr:DownloadClient/downloadClientDeluge:DownloadClientDeluge": "radarr_download_client_deluge",
-            "radarr:DownloadClient/downloadClientFlood:DownloadClientFlood": "radarr_download_client_flood",
-            "radarr:DownloadClient/downloadClientFreebox:DownloadClientFreebox": "radarr_download_client_freebox",
-            "radarr:DownloadClient/downloadClientHadouken:DownloadClientHadouken": "radarr_download_client_hadouken",
-            "radarr:DownloadClient/downloadClientNzbget:DownloadClientNzbget": "radarr_download_client_nzbget",
-            "radarr:DownloadClient/downloadClientNzbvortex:DownloadClientNzbvortex": "radarr_download_client_nzbvortex",
-            "radarr:DownloadClient/downloadClientPneumatic:DownloadClientPneumatic": "radarr_download_client_pneumatic",
-            "radarr:DownloadClient/downloadClientQbittorrent:DownloadClientQbittorrent": "radarr_download_client_qbittorrent",
-            "radarr:DownloadClient/downloadClientRtorrent:DownloadClientRtorrent": "radarr_download_client_rtorrent",
-            "radarr:DownloadClient/downloadClientSabnzbd:DownloadClientSabnzbd": "radarr_download_client_sabnzbd",
-            "radarr:DownloadClient/downloadClientTorrentBlackhole:DownloadClientTorrentBlackhole": "radarr_download_client_torrent_blackhole",
-            "radarr:DownloadClient/downloadClientTorrentDownloadStation:DownloadClientTorrentDownloadStation": "radarr_download_client_torrent_download_station",
-            "radarr:DownloadClient/downloadClientTransmission:DownloadClientTransmission": "radarr_download_client_transmission",
-            "radarr:DownloadClient/downloadClientUsenetBlackhole:DownloadClientUsenetBlackhole": "radarr_download_client_usenet_blackhole",
-            "radarr:DownloadClient/downloadClientUsenetDownloadStation:DownloadClientUsenetDownloadStation": "radarr_download_client_usenet_download_station",
-            "radarr:DownloadClient/downloadClientUtorrent:DownloadClientUtorrent": "radarr_download_client_utorrent",
-            "radarr:DownloadClient/downloadClientVuze:DownloadClientVuze": "radarr_download_client_vuze",
-            "radarr:DownloadClient/remotePathMapping:RemotePathMapping": "radarr_remote_path_mapping",
+            "radarr:DownloadClients/downloadClient:DownloadClient": "radarr_download_client",
+            "radarr:DownloadClients/downloadClientAria2:DownloadClientAria2": "radarr_download_client_aria2",
+            "radarr:DownloadClients/downloadClientConfig:DownloadClientConfig": "radarr_download_client_config",
+            "radarr:DownloadClients/downloadClientDeluge:DownloadClientDeluge": "radarr_download_client_deluge",
+            "radarr:DownloadClients/downloadClientFlood:DownloadClientFlood": "radarr_download_client_flood",
+            "radarr:DownloadClients/downloadClientFreebox:DownloadClientFreebox": "radarr_download_client_freebox",
+            "radarr:DownloadClients/downloadClientHadouken:DownloadClientHadouken": "radarr_download_client_hadouken",
+            "radarr:DownloadClients/downloadClientNzbget:DownloadClientNzbget": "radarr_download_client_nzbget",
+            "radarr:DownloadClients/downloadClientNzbvortex:DownloadClientNzbvortex": "radarr_download_client_nzbvortex",
+            "radarr:DownloadClients/downloadClientPneumatic:DownloadClientPneumatic": "radarr_download_client_pneumatic",
+            "radarr:DownloadClients/downloadClientQbittorrent:DownloadClientQbittorrent": "radarr_download_client_qbittorrent",
+            "radarr:DownloadClients/downloadClientRtorrent:DownloadClientRtorrent": "radarr_download_client_rtorrent",
+            "radarr:DownloadClients/downloadClientSabnzbd:DownloadClientSabnzbd": "radarr_download_client_sabnzbd",
+            "radarr:DownloadClients/downloadClientTorrentBlackhole:DownloadClientTorrentBlackhole": "radarr_download_client_torrent_blackhole",
+            "radarr:DownloadClients/downloadClientTorrentDownloadStation:DownloadClientTorrentDownloadStation": "radarr_download_client_torrent_download_station",
+            "radarr:DownloadClients/downloadClientTransmission:DownloadClientTransmission": "radarr_download_client_transmission",
+            "radarr:DownloadClients/downloadClientUsenetBlackhole:DownloadClientUsenetBlackhole": "radarr_download_client_usenet_blackhole",
+            "radarr:DownloadClients/downloadClientUsenetDownloadStation:DownloadClientUsenetDownloadStation": "radarr_download_client_usenet_download_station",
+            "radarr:DownloadClients/downloadClientUtorrent:DownloadClientUtorrent": "radarr_download_client_utorrent",
+            "radarr:DownloadClients/downloadClientVuze:DownloadClientVuze": "radarr_download_client_vuze",
+            "radarr:DownloadClients/remotePathMapping:RemotePathMapping": "radarr_remote_path_mapping",
             "radarr:ImportLists/importList:ImportList": "radarr_import_list",
             "radarr:ImportLists/importListConfig:ImportListConfig": "radarr_import_list_config",
             "radarr:ImportLists/importListCouchPotato:ImportListCouchPotato": "radarr_import_list_couch_potato",
@@ -97,11 +97,11 @@
             "radarr:Tags/tag:Tag": "radarr_tag"
         },
         "functions": {
-            "radarr:DownloadClient/getDownloadClient:getDownloadClient": "radarr_download_client",
-            "radarr:DownloadClient/getDownloadClientConfig:getDownloadClientConfig": "radarr_download_client_config",
-            "radarr:DownloadClient/getDownloadClients:getDownloadClients": "radarr_download_clients",
-            "radarr:DownloadClient/getRemotePathMapping:getRemotePathMapping": "radarr_remote_path_mapping",
-            "radarr:DownloadClient/getRemotePathMappings:getRemotePathMappings": "radarr_remote_path_mappings",
+            "radarr:DownloadClients/getDownloadClient:getDownloadClient": "radarr_download_client",
+            "radarr:DownloadClients/getDownloadClientConfig:getDownloadClientConfig": "radarr_download_client_config",
+            "radarr:DownloadClients/getDownloadClients:getDownloadClients": "radarr_download_clients",
+            "radarr:DownloadClients/getRemotePathMapping:getRemotePathMapping": "radarr_remote_path_mapping",
+            "radarr:DownloadClients/getRemotePathMappings:getRemotePathMappings": "radarr_remote_path_mappings",
             "radarr:ImportLists/getImportList:getImportList": "radarr_import_list",
             "radarr:ImportLists/getImportListConfig:getImportListConfig": "radarr_import_list_config",
             "radarr:ImportLists/getImportListExclusion:getImportListExclusion": "radarr_import_list_exclusion",
@@ -149,7 +149,7 @@
             "radarr:Tags/getTags:getTags": "radarr_tags"
         },
         "renamedProperties": {
-            "radarr:DownloadClient/downloadClient:DownloadClient": {
+            "radarr:DownloadClients/downloadClient:DownloadClient": {
                 "addPaused": "add_paused",
                 "addStopped": "add_stopped",
                 "additionalTags": "additional_tags",
@@ -187,20 +187,20 @@
                 "useSsl": "use_ssl",
                 "watchFolder": "watch_folder"
             },
-            "radarr:DownloadClient/downloadClientAria2:DownloadClientAria2": {
+            "radarr:DownloadClients/downloadClientAria2:DownloadClientAria2": {
                 "removeCompletedDownloads": "remove_completed_downloads",
                 "removeFailedDownloads": "remove_failed_downloads",
                 "rpcPath": "rpc_path",
                 "secretToken": "secret_token",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientConfig:DownloadClientConfig": {
+            "radarr:DownloadClients/downloadClientConfig:DownloadClientConfig": {
                 "autoRedownloadFailed": "auto_redownload_failed",
                 "checkForFinishedDownloadInterval": "check_for_finished_download_interval",
                 "downloadClientWorkingFolders": "download_client_working_folders",
                 "enableCompletedDownloadHandling": "enable_completed_download_handling"
             },
-            "radarr:DownloadClient/downloadClientDeluge:DownloadClientDeluge": {
+            "radarr:DownloadClients/downloadClientDeluge:DownloadClientDeluge": {
                 "addPaused": "add_paused",
                 "movieCategory": "movie_category",
                 "movieDirectory": "movie_directory",
@@ -212,7 +212,7 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientFlood:DownloadClientFlood": {
+            "radarr:DownloadClients/downloadClientFlood:DownloadClientFlood": {
                 "addPaused": "add_paused",
                 "additionalTags": "additional_tags",
                 "fieldTags": "field_tags",
@@ -226,7 +226,7 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientFreebox:DownloadClientFreebox": {
+            "radarr:DownloadClients/downloadClientFreebox:DownloadClientFreebox": {
                 "addPaused": "add_paused",
                 "apiUrl": "api_url",
                 "appId": "app_id",
@@ -238,13 +238,13 @@
                 "removeFailedDownloads": "remove_failed_downloads",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientHadouken:DownloadClientHadouken": {
+            "radarr:DownloadClients/downloadClientHadouken:DownloadClientHadouken": {
                 "removeCompletedDownloads": "remove_completed_downloads",
                 "removeFailedDownloads": "remove_failed_downloads",
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientNzbget:DownloadClientNzbget": {
+            "radarr:DownloadClients/downloadClientNzbget:DownloadClientNzbget": {
                 "addPaused": "add_paused",
                 "movieCategory": "movie_category",
                 "olderMoviePriority": "older_movie_priority",
@@ -254,7 +254,7 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientNzbvortex:DownloadClientNzbvortex": {
+            "radarr:DownloadClients/downloadClientNzbvortex:DownloadClientNzbvortex": {
                 "apiKey": "api_key",
                 "movieCategory": "movie_category",
                 "olderMoviePriority": "older_movie_priority",
@@ -264,13 +264,13 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientPneumatic:DownloadClientPneumatic": {
+            "radarr:DownloadClients/downloadClientPneumatic:DownloadClientPneumatic": {
                 "nzbFolder": "nzb_folder",
                 "removeCompletedDownloads": "remove_completed_downloads",
                 "removeFailedDownloads": "remove_failed_downloads",
                 "strmFolder": "strm_folder"
             },
-            "radarr:DownloadClient/downloadClientQbittorrent:DownloadClientQbittorrent": {
+            "radarr:DownloadClients/downloadClientQbittorrent:DownloadClientQbittorrent": {
                 "firstAndLast": "first_and_last",
                 "initialState": "initial_state",
                 "movieCategory": "movie_category",
@@ -284,7 +284,7 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientRtorrent:DownloadClientRtorrent": {
+            "radarr:DownloadClients/downloadClientRtorrent:DownloadClientRtorrent": {
                 "addStopped": "add_stopped",
                 "movieCategory": "movie_category",
                 "movieDirectory": "movie_directory",
@@ -296,7 +296,7 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientSabnzbd:DownloadClientSabnzbd": {
+            "radarr:DownloadClients/downloadClientSabnzbd:DownloadClientSabnzbd": {
                 "apiKey": "api_key",
                 "movieCategory": "movie_category",
                 "olderMoviePriority": "older_movie_priority",
@@ -306,7 +306,7 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientTorrentBlackhole:DownloadClientTorrentBlackhole": {
+            "radarr:DownloadClients/downloadClientTorrentBlackhole:DownloadClientTorrentBlackhole": {
                 "magnetFileExtension": "magnet_file_extension",
                 "readOnly": "read_only",
                 "removeCompletedDownloads": "remove_completed_downloads",
@@ -315,14 +315,14 @@
                 "torrentFolder": "torrent_folder",
                 "watchFolder": "watch_folder"
             },
-            "radarr:DownloadClient/downloadClientTorrentDownloadStation:DownloadClientTorrentDownloadStation": {
+            "radarr:DownloadClients/downloadClientTorrentDownloadStation:DownloadClientTorrentDownloadStation": {
                 "movieCategory": "movie_category",
                 "movieDirectory": "movie_directory",
                 "removeCompletedDownloads": "remove_completed_downloads",
                 "removeFailedDownloads": "remove_failed_downloads",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientTransmission:DownloadClientTransmission": {
+            "radarr:DownloadClients/downloadClientTransmission:DownloadClientTransmission": {
                 "addPaused": "add_paused",
                 "movieCategory": "movie_category",
                 "movieDirectory": "movie_directory",
@@ -333,20 +333,20 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientUsenetBlackhole:DownloadClientUsenetBlackhole": {
+            "radarr:DownloadClients/downloadClientUsenetBlackhole:DownloadClientUsenetBlackhole": {
                 "nzbFolder": "nzb_folder",
                 "removeCompletedDownloads": "remove_completed_downloads",
                 "removeFailedDownloads": "remove_failed_downloads",
                 "watchFolder": "watch_folder"
             },
-            "radarr:DownloadClient/downloadClientUsenetDownloadStation:DownloadClientUsenetDownloadStation": {
+            "radarr:DownloadClients/downloadClientUsenetDownloadStation:DownloadClientUsenetDownloadStation": {
                 "movieCategory": "movie_category",
                 "movieDirectory": "movie_directory",
                 "removeCompletedDownloads": "remove_completed_downloads",
                 "removeFailedDownloads": "remove_failed_downloads",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientUtorrent:DownloadClientUtorrent": {
+            "radarr:DownloadClients/downloadClientUtorrent:DownloadClientUtorrent": {
                 "intialState": "intial_state",
                 "movieCategory": "movie_category",
                 "movieDirectory": "movie_directory",
@@ -358,7 +358,7 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/downloadClientVuze:DownloadClientVuze": {
+            "radarr:DownloadClients/downloadClientVuze:DownloadClientVuze": {
                 "addPaused": "add_paused",
                 "movieCategory": "movie_category",
                 "movieDirectory": "movie_directory",
@@ -369,7 +369,7 @@
                 "urlBase": "url_base",
                 "useSsl": "use_ssl"
             },
-            "radarr:DownloadClient/getDownloadClient:getDownloadClient": {
+            "radarr:DownloadClients/getDownloadClient:getDownloadClient": {
                 "addPaused": "add_paused",
                 "addStopped": "add_stopped",
                 "additionalTags": "additional_tags",
@@ -407,16 +407,16 @@
                 "useSsl": "use_ssl",
                 "watchFolder": "watch_folder"
             },
-            "radarr:DownloadClient/getDownloadClientConfig:getDownloadClientConfig": {
+            "radarr:DownloadClients/getDownloadClientConfig:getDownloadClientConfig": {
                 "autoRedownloadFailed": "auto_redownload_failed",
                 "checkForFinishedDownloadInterval": "check_for_finished_download_interval",
                 "downloadClientWorkingFolders": "download_client_working_folders",
                 "enableCompletedDownloadHandling": "enable_completed_download_handling"
             },
-            "radarr:DownloadClient/getDownloadClients:getDownloadClients": {
+            "radarr:DownloadClients/getDownloadClients:getDownloadClients": {
                 "downloadClients": "download_clients"
             },
-            "radarr:DownloadClient/getDownloadClientsDownloadClient:getDownloadClientsDownloadClient": {
+            "radarr:DownloadClients/getDownloadClientsDownloadClient:getDownloadClientsDownloadClient": {
                 "addPaused": "add_paused",
                 "addStopped": "add_stopped",
                 "additionalTags": "additional_tags",
@@ -454,18 +454,18 @@
                 "useSsl": "use_ssl",
                 "watchFolder": "watch_folder"
             },
-            "radarr:DownloadClient/getRemotePathMapping:getRemotePathMapping": {
+            "radarr:DownloadClients/getRemotePathMapping:getRemotePathMapping": {
                 "localPath": "local_path",
                 "remotePath": "remote_path"
             },
-            "radarr:DownloadClient/getRemotePathMappings:getRemotePathMappings": {
+            "radarr:DownloadClients/getRemotePathMappings:getRemotePathMappings": {
                 "remotePathMappings": "remote_path_mappings"
             },
-            "radarr:DownloadClient/getRemotePathMappingsRemotePathMapping:getRemotePathMappingsRemotePathMapping": {
+            "radarr:DownloadClients/getRemotePathMappingsRemotePathMapping:getRemotePathMappingsRemotePathMapping": {
                 "localPath": "local_path",
                 "remotePath": "remote_path"
             },
-            "radarr:DownloadClient/remotePathMapping:RemotePathMapping": {
+            "radarr:DownloadClients/remotePathMapping:RemotePathMapping": {
                 "localPath": "local_path",
                 "remotePath": "remote_path"
             },

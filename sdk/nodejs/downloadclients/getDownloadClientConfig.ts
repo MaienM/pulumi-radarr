@@ -13,13 +13,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@pulumi/radarr";
  *
- * const example = radarr.DownloadClient.getDownloadClientConfig({});
+ * const example = radarr.DownloadClients.getDownloadClientConfig({});
  * ```
  */
 export function getDownloadClientConfig(opts?: pulumi.InvokeOptions): Promise<GetDownloadClientConfigResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("radarr:DownloadClient/getDownloadClientConfig:getDownloadClientConfig", {
+    return pulumi.runtime.invoke("radarr:DownloadClients/getDownloadClientConfig:getDownloadClientConfig", {
     }, opts);
 }
 

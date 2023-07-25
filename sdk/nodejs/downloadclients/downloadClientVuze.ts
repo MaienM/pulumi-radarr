@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * <!-- subcategory:Download Clients -->Download Client Transmission resource.
- * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Transmission](https://wiki.servarr.com/radarr/supported#transmission).
+ * <!-- subcategory:Download Clients -->Download Client Vuze resource.
+ * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Vuze](https://wiki.servarr.com/radarr/supported#vuze).
  *
  * ## Example Usage
  *
@@ -14,13 +14,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientTransmission("example", {
+ * const example = new radarr.downloadclients.DownloadClientVuze("example", {
  *     enable: true,
- *     host: "transmission",
+ *     host: "vuze",
  *     name: "Example",
  *     port: 9091,
  *     priority: 1,
- *     urlBase: "/transmission/",
+ *     urlBase: "/vuze/",
  * });
  * ```
  *
@@ -29,12 +29,12 @@ import * as utilities from "../utilities";
  * import using the API/UI ID
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientTransmission:DownloadClientTransmission example 1
+ *  $ pulumi import radarr:DownloadClients/downloadClientVuze:DownloadClientVuze example 1
  * ```
  */
-export class DownloadClientTransmission extends pulumi.CustomResource {
+export class DownloadClientVuze extends pulumi.CustomResource {
     /**
-     * Get an existing DownloadClientTransmission resource's state with the given name, ID, and optional extra
+     * Get an existing DownloadClientVuze resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -42,22 +42,22 @@ export class DownloadClientTransmission extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientTransmissionState, opts?: pulumi.CustomResourceOptions): DownloadClientTransmission {
-        return new DownloadClientTransmission(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientVuzeState, opts?: pulumi.CustomResourceOptions): DownloadClientVuze {
+        return new DownloadClientVuze(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientTransmission:DownloadClientTransmission';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientVuze:DownloadClientVuze';
 
     /**
-     * Returns true if the given object is an instance of DownloadClientTransmission.  This is designed to work even
+     * Returns true if the given object is an instance of DownloadClientVuze.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DownloadClientTransmission {
+    public static isInstance(obj: any): obj is DownloadClientVuze {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DownloadClientTransmission.__pulumiType;
+        return obj['__pulumiType'] === DownloadClientVuze.__pulumiType;
     }
 
     /**
@@ -130,18 +130,18 @@ export class DownloadClientTransmission extends pulumi.CustomResource {
     public readonly username!: pulumi.Output<string>;
 
     /**
-     * Create a DownloadClientTransmission resource with the given unique name, arguments, and options.
+     * Create a DownloadClientVuze resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DownloadClientTransmissionArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DownloadClientTransmissionArgs | DownloadClientTransmissionState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DownloadClientVuzeArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DownloadClientVuzeArgs | DownloadClientVuzeState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DownloadClientTransmissionState | undefined;
+            const state = argsOrState as DownloadClientVuzeState | undefined;
             resourceInputs["addPaused"] = state ? state.addPaused : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
@@ -160,7 +160,7 @@ export class DownloadClientTransmission extends pulumi.CustomResource {
             resourceInputs["useSsl"] = state ? state.useSsl : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
-            const args = argsOrState as DownloadClientTransmissionArgs | undefined;
+            const args = argsOrState as DownloadClientVuzeArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -185,14 +185,14 @@ export class DownloadClientTransmission extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DownloadClientTransmission.__pulumiType, name, resourceInputs, opts);
+        super(DownloadClientVuze.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DownloadClientTransmission resources.
+ * Input properties used for looking up and filtering DownloadClientVuze resources.
  */
-export interface DownloadClientTransmissionState {
+export interface DownloadClientVuzeState {
     /**
      * Add paused flag.
      */
@@ -264,9 +264,9 @@ export interface DownloadClientTransmissionState {
 }
 
 /**
- * The set of arguments for constructing a DownloadClientTransmission resource.
+ * The set of arguments for constructing a DownloadClientVuze resource.
  */
-export interface DownloadClientTransmissionArgs {
+export interface DownloadClientVuzeArgs {
     /**
      * Add paused flag.
      */

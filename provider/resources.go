@@ -36,7 +36,7 @@ var bridgeMetadata []byte
 const (
 	// This variable controls the default name of the package in the package
 	mainMod            = "index" // the radarr module
-	modDownloadClients = "DownloadClient"
+	modDownloadClients = "DownloadClients"
 	modImportLists     = "ImportLists"
 	modIndexers        = "Indexers"
 	modMediaManagement = "MediaManagement"

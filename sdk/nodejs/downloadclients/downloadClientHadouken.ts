@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * <!-- subcategory:Download Clients -->Download Client Vuze resource.
- * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Vuze](https://wiki.servarr.com/radarr/supported#vuze).
+ * <!-- subcategory:Download Clients -->Download Client Hadouken resource.
+ * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Hadouken](https://wiki.servarr.com/radarr/supported#hadouken).
  *
  * ## Example Usage
  *
@@ -14,13 +14,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientVuze("example", {
+ * const example = new radarr.downloadclients.DownloadClientHadouken("example", {
  *     enable: true,
- *     host: "vuze",
+ *     host: "hadouken",
  *     name: "Example",
+ *     password: "password",
  *     port: 9091,
  *     priority: 1,
- *     urlBase: "/vuze/",
+ *     urlBase: "/hadouken/",
+ *     username: "username",
  * });
  * ```
  *
@@ -29,12 +31,12 @@ import * as utilities from "../utilities";
  * import using the API/UI ID
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientVuze:DownloadClientVuze example 1
+ *  $ pulumi import radarr:DownloadClients/downloadClientHadouken:DownloadClientHadouken example 1
  * ```
  */
-export class DownloadClientVuze extends pulumi.CustomResource {
+export class DownloadClientHadouken extends pulumi.CustomResource {
     /**
-     * Get an existing DownloadClientVuze resource's state with the given name, ID, and optional extra
+     * Get an existing DownloadClientHadouken resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -42,28 +44,28 @@ export class DownloadClientVuze extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientVuzeState, opts?: pulumi.CustomResourceOptions): DownloadClientVuze {
-        return new DownloadClientVuze(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientHadoukenState, opts?: pulumi.CustomResourceOptions): DownloadClientHadouken {
+        return new DownloadClientHadouken(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientVuze:DownloadClientVuze';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientHadouken:DownloadClientHadouken';
 
     /**
-     * Returns true if the given object is an instance of DownloadClientVuze.  This is designed to work even
+     * Returns true if the given object is an instance of DownloadClientHadouken.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DownloadClientVuze {
+    public static isInstance(obj: any): obj is DownloadClientHadouken {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DownloadClientVuze.__pulumiType;
+        return obj['__pulumiType'] === DownloadClientHadouken.__pulumiType;
     }
 
     /**
-     * Add paused flag.
+     * Category.
      */
-    public readonly addPaused!: pulumi.Output<boolean>;
+    public readonly category!: pulumi.Output<string>;
     /**
      * Enable flag.
      */
@@ -73,21 +75,9 @@ export class DownloadClientVuze extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string>;
     /**
-     * Movie category.
-     */
-    public readonly movieCategory!: pulumi.Output<string>;
-    /**
-     * Movie directory.
-     */
-    public readonly movieDirectory!: pulumi.Output<string>;
-    /**
      * Download Client name.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Older Movie priority. `0` Last, `1` First.
-     */
-    public readonly olderMoviePriority!: pulumi.Output<number>;
     /**
      * Password.
      */
@@ -100,10 +90,6 @@ export class DownloadClientVuze extends pulumi.CustomResource {
      * Priority.
      */
     public readonly priority!: pulumi.Output<number>;
-    /**
-     * Recent Movie priority. `0` Last, `1` First.
-     */
-    public readonly recentMoviePriority!: pulumi.Output<number>;
     /**
      * Remove completed downloads flag.
      */
@@ -130,29 +116,25 @@ export class DownloadClientVuze extends pulumi.CustomResource {
     public readonly username!: pulumi.Output<string>;
 
     /**
-     * Create a DownloadClientVuze resource with the given unique name, arguments, and options.
+     * Create a DownloadClientHadouken resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DownloadClientVuzeArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DownloadClientVuzeArgs | DownloadClientVuzeState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DownloadClientHadoukenArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DownloadClientHadoukenArgs | DownloadClientHadoukenState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DownloadClientVuzeState | undefined;
-            resourceInputs["addPaused"] = state ? state.addPaused : undefined;
+            const state = argsOrState as DownloadClientHadoukenState | undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["movieCategory"] = state ? state.movieCategory : undefined;
-            resourceInputs["movieDirectory"] = state ? state.movieDirectory : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["olderMoviePriority"] = state ? state.olderMoviePriority : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["recentMoviePriority"] = state ? state.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = state ? state.removeCompletedDownloads : undefined;
             resourceInputs["removeFailedDownloads"] = state ? state.removeFailedDownloads : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -160,21 +142,23 @@ export class DownloadClientVuze extends pulumi.CustomResource {
             resourceInputs["useSsl"] = state ? state.useSsl : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
-            const args = argsOrState as DownloadClientVuzeArgs | undefined;
+            const args = argsOrState as DownloadClientHadoukenArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["addPaused"] = args ? args.addPaused : undefined;
+            if ((!args || args.password === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'password'");
+            }
+            if ((!args || args.username === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'username'");
+            }
+            resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["movieCategory"] = args ? args.movieCategory : undefined;
-            resourceInputs["movieDirectory"] = args ? args.movieDirectory : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["olderMoviePriority"] = args ? args.olderMoviePriority : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["recentMoviePriority"] = args ? args.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = args ? args.removeCompletedDownloads : undefined;
             resourceInputs["removeFailedDownloads"] = args ? args.removeFailedDownloads : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -185,18 +169,18 @@ export class DownloadClientVuze extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DownloadClientVuze.__pulumiType, name, resourceInputs, opts);
+        super(DownloadClientHadouken.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DownloadClientVuze resources.
+ * Input properties used for looking up and filtering DownloadClientHadouken resources.
  */
-export interface DownloadClientVuzeState {
+export interface DownloadClientHadoukenState {
     /**
-     * Add paused flag.
+     * Category.
      */
-    addPaused?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
     /**
      * Enable flag.
      */
@@ -205,23 +189,11 @@ export interface DownloadClientVuzeState {
      * host.
      */
     host?: pulumi.Input<string>;
-    /**
-     * Movie category.
-     */
-    movieCategory?: pulumi.Input<string>;
-    /**
-     * Movie directory.
-     */
-    movieDirectory?: pulumi.Input<string>;
     /**
      * Download Client name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Older Movie priority. `0` Last, `1` First.
-     */
-    olderMoviePriority?: pulumi.Input<number>;
-    /**
      * Password.
      */
     password?: pulumi.Input<string>;
@@ -233,10 +205,6 @@ export interface DownloadClientVuzeState {
      * Priority.
      */
     priority?: pulumi.Input<number>;
-    /**
-     * Recent Movie priority. `0` Last, `1` First.
-     */
-    recentMoviePriority?: pulumi.Input<number>;
     /**
      * Remove completed downloads flag.
      */
@@ -264,13 +232,13 @@ export interface DownloadClientVuzeState {
 }
 
 /**
- * The set of arguments for constructing a DownloadClientVuze resource.
+ * The set of arguments for constructing a DownloadClientHadouken resource.
  */
-export interface DownloadClientVuzeArgs {
+export interface DownloadClientHadoukenArgs {
     /**
-     * Add paused flag.
+     * Category.
      */
-    addPaused?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string>;
     /**
      * Enable flag.
      */
@@ -280,25 +248,13 @@ export interface DownloadClientVuzeArgs {
      */
     host?: pulumi.Input<string>;
     /**
-     * Movie category.
-     */
-    movieCategory?: pulumi.Input<string>;
-    /**
-     * Movie directory.
-     */
-    movieDirectory?: pulumi.Input<string>;
-    /**
      * Download Client name.
      */
     name: pulumi.Input<string>;
     /**
-     * Older Movie priority. `0` Last, `1` First.
-     */
-    olderMoviePriority?: pulumi.Input<number>;
-    /**
      * Password.
      */
-    password?: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * Port.
      */
@@ -307,10 +263,6 @@ export interface DownloadClientVuzeArgs {
      * Priority.
      */
     priority?: pulumi.Input<number>;
-    /**
-     * Recent Movie priority. `0` Last, `1` First.
-     */
-    recentMoviePriority?: pulumi.Input<number>;
     /**
      * Remove completed downloads flag.
      */
@@ -334,5 +286,5 @@ export interface DownloadClientVuzeArgs {
     /**
      * Username.
      */
-    username?: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }

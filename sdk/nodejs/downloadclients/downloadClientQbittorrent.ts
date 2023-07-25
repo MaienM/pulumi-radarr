@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * <!-- subcategory:Download Clients -->Download Client Sabnzbd resource.
- * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Sabnzbd](https://wiki.servarr.com/radarr/supported#sabnzbd).
+ * <!-- subcategory:Download Clients -->Download Client qBittorrent resource.
+ * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [qBittorrent](https://wiki.servarr.com/radarr/supported#qbittorrent).
  *
  * ## Example Usage
  *
@@ -14,14 +14,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientSabnzbd("example", {
- *     apiKey: "test",
+ * const example = new radarr.downloadclients.DownloadClientQbittorrent("example", {
  *     enable: true,
- *     host: "sabnzbd",
+ *     firstAndLast: true,
+ *     host: "qbittorrent",
+ *     movieCategory: "tv-radarr",
  *     name: "Example",
  *     port: 9091,
  *     priority: 1,
- *     urlBase: "/sabnzbd/",
+ *     urlBase: "/qbittorrent/",
  * });
  * ```
  *
@@ -30,12 +31,12 @@ import * as utilities from "../utilities";
  * import using the API/UI ID
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientSabnzbd:DownloadClientSabnzbd example 1
+ *  $ pulumi import radarr:DownloadClients/downloadClientQbittorrent:DownloadClientQbittorrent example 1
  * ```
  */
-export class DownloadClientSabnzbd extends pulumi.CustomResource {
+export class DownloadClientQbittorrent extends pulumi.CustomResource {
     /**
-     * Get an existing DownloadClientSabnzbd resource's state with the given name, ID, and optional extra
+     * Get an existing DownloadClientQbittorrent resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -43,46 +44,58 @@ export class DownloadClientSabnzbd extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientSabnzbdState, opts?: pulumi.CustomResourceOptions): DownloadClientSabnzbd {
-        return new DownloadClientSabnzbd(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientQbittorrentState, opts?: pulumi.CustomResourceOptions): DownloadClientQbittorrent {
+        return new DownloadClientQbittorrent(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientSabnzbd:DownloadClientSabnzbd';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientQbittorrent:DownloadClientQbittorrent';
 
     /**
-     * Returns true if the given object is an instance of DownloadClientSabnzbd.  This is designed to work even
+     * Returns true if the given object is an instance of DownloadClientQbittorrent.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DownloadClientSabnzbd {
+    public static isInstance(obj: any): obj is DownloadClientQbittorrent {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DownloadClientSabnzbd.__pulumiType;
+        return obj['__pulumiType'] === DownloadClientQbittorrent.__pulumiType;
     }
 
-    /**
-     * API key.
-     */
-    public readonly apiKey!: pulumi.Output<string>;
     /**
      * Enable flag.
      */
     public readonly enable!: pulumi.Output<boolean>;
     /**
+     * First and last flag.
+     */
+    public readonly firstAndLast!: pulumi.Output<boolean>;
+    /**
      * host.
      */
     public readonly host!: pulumi.Output<string>;
+    /**
+     * Initial state, with Stop support. `0` Start, `1` ForceStart, `2` Pause.
+     */
+    public readonly initialState!: pulumi.Output<number>;
     /**
      * Movie category.
      */
     public readonly movieCategory!: pulumi.Output<string>;
     /**
+     * Movie directory.
+     */
+    public readonly movieDirectory!: pulumi.Output<string>;
+    /**
+     * Movie imported category.
+     */
+    public readonly movieImportedCategory!: pulumi.Output<string>;
+    /**
      * Download Client name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Older Movie priority. `-100` Default, `-2` Paused, `-1` Low, `0` Normal, `1` High, `2` Force.
+     * Older Movie priority. `0` Last, `1` First.
      */
     public readonly olderMoviePriority!: pulumi.Output<number>;
     /**
@@ -98,7 +111,7 @@ export class DownloadClientSabnzbd extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * Recent Movie priority. `-100` Default, `-2` Paused, `-1` Low, `0` Normal, `1` High, `2` Force.
+     * Recent Movie priority. `0` Last, `1` First.
      */
     public readonly recentMoviePriority!: pulumi.Output<number>;
     /**
@@ -109,6 +122,10 @@ export class DownloadClientSabnzbd extends pulumi.CustomResource {
      * Remove failed downloads flag.
      */
     public readonly removeFailedDownloads!: pulumi.Output<boolean>;
+    /**
+     * Sequential order flag.
+     */
+    public readonly sequentialOrder!: pulumi.Output<boolean>;
     /**
      * List of associated tags.
      */
@@ -127,22 +144,25 @@ export class DownloadClientSabnzbd extends pulumi.CustomResource {
     public readonly username!: pulumi.Output<string>;
 
     /**
-     * Create a DownloadClientSabnzbd resource with the given unique name, arguments, and options.
+     * Create a DownloadClientQbittorrent resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DownloadClientSabnzbdArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DownloadClientSabnzbdArgs | DownloadClientSabnzbdState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DownloadClientQbittorrentArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DownloadClientQbittorrentArgs | DownloadClientQbittorrentState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DownloadClientSabnzbdState | undefined;
-            resourceInputs["apiKey"] = state ? state.apiKey : undefined;
+            const state = argsOrState as DownloadClientQbittorrentState | undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["firstAndLast"] = state ? state.firstAndLast : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["initialState"] = state ? state.initialState : undefined;
             resourceInputs["movieCategory"] = state ? state.movieCategory : undefined;
+            resourceInputs["movieDirectory"] = state ? state.movieDirectory : undefined;
+            resourceInputs["movieImportedCategory"] = state ? state.movieImportedCategory : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["olderMoviePriority"] = state ? state.olderMoviePriority : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
@@ -151,19 +171,23 @@ export class DownloadClientSabnzbd extends pulumi.CustomResource {
             resourceInputs["recentMoviePriority"] = state ? state.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = state ? state.removeCompletedDownloads : undefined;
             resourceInputs["removeFailedDownloads"] = state ? state.removeFailedDownloads : undefined;
+            resourceInputs["sequentialOrder"] = state ? state.sequentialOrder : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["urlBase"] = state ? state.urlBase : undefined;
             resourceInputs["useSsl"] = state ? state.useSsl : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
-            const args = argsOrState as DownloadClientSabnzbdArgs | undefined;
+            const args = argsOrState as DownloadClientQbittorrentArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["firstAndLast"] = args ? args.firstAndLast : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["initialState"] = args ? args.initialState : undefined;
             resourceInputs["movieCategory"] = args ? args.movieCategory : undefined;
+            resourceInputs["movieDirectory"] = args ? args.movieDirectory : undefined;
+            resourceInputs["movieImportedCategory"] = args ? args.movieImportedCategory : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["olderMoviePriority"] = args ? args.olderMoviePriority : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
@@ -172,44 +196,57 @@ export class DownloadClientSabnzbd extends pulumi.CustomResource {
             resourceInputs["recentMoviePriority"] = args ? args.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = args ? args.removeCompletedDownloads : undefined;
             resourceInputs["removeFailedDownloads"] = args ? args.removeFailedDownloads : undefined;
+            resourceInputs["sequentialOrder"] = args ? args.sequentialOrder : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["urlBase"] = args ? args.urlBase : undefined;
             resourceInputs["useSsl"] = args ? args.useSsl : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["apiKey", "password"] };
+        const secretOpts = { additionalSecretOutputs: ["password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DownloadClientSabnzbd.__pulumiType, name, resourceInputs, opts);
+        super(DownloadClientQbittorrent.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DownloadClientSabnzbd resources.
+ * Input properties used for looking up and filtering DownloadClientQbittorrent resources.
  */
-export interface DownloadClientSabnzbdState {
-    /**
-     * API key.
-     */
-    apiKey?: pulumi.Input<string>;
+export interface DownloadClientQbittorrentState {
     /**
      * Enable flag.
      */
     enable?: pulumi.Input<boolean>;
     /**
+     * First and last flag.
+     */
+    firstAndLast?: pulumi.Input<boolean>;
+    /**
      * host.
      */
     host?: pulumi.Input<string>;
+    /**
+     * Initial state, with Stop support. `0` Start, `1` ForceStart, `2` Pause.
+     */
+    initialState?: pulumi.Input<number>;
     /**
      * Movie category.
      */
     movieCategory?: pulumi.Input<string>;
     /**
+     * Movie directory.
+     */
+    movieDirectory?: pulumi.Input<string>;
+    /**
+     * Movie imported category.
+     */
+    movieImportedCategory?: pulumi.Input<string>;
+    /**
      * Download Client name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Older Movie priority. `-100` Default, `-2` Paused, `-1` Low, `0` Normal, `1` High, `2` Force.
+     * Older Movie priority. `0` Last, `1` First.
      */
     olderMoviePriority?: pulumi.Input<number>;
     /**
@@ -225,7 +262,7 @@ export interface DownloadClientSabnzbdState {
      */
     priority?: pulumi.Input<number>;
     /**
-     * Recent Movie priority. `-100` Default, `-2` Paused, `-1` Low, `0` Normal, `1` High, `2` Force.
+     * Recent Movie priority. `0` Last, `1` First.
      */
     recentMoviePriority?: pulumi.Input<number>;
     /**
@@ -236,6 +273,10 @@ export interface DownloadClientSabnzbdState {
      * Remove failed downloads flag.
      */
     removeFailedDownloads?: pulumi.Input<boolean>;
+    /**
+     * Sequential order flag.
+     */
+    sequentialOrder?: pulumi.Input<boolean>;
     /**
      * List of associated tags.
      */
@@ -255,31 +296,43 @@ export interface DownloadClientSabnzbdState {
 }
 
 /**
- * The set of arguments for constructing a DownloadClientSabnzbd resource.
+ * The set of arguments for constructing a DownloadClientQbittorrent resource.
  */
-export interface DownloadClientSabnzbdArgs {
-    /**
-     * API key.
-     */
-    apiKey?: pulumi.Input<string>;
+export interface DownloadClientQbittorrentArgs {
     /**
      * Enable flag.
      */
     enable?: pulumi.Input<boolean>;
     /**
+     * First and last flag.
+     */
+    firstAndLast?: pulumi.Input<boolean>;
+    /**
      * host.
      */
     host?: pulumi.Input<string>;
+    /**
+     * Initial state, with Stop support. `0` Start, `1` ForceStart, `2` Pause.
+     */
+    initialState?: pulumi.Input<number>;
     /**
      * Movie category.
      */
     movieCategory?: pulumi.Input<string>;
     /**
+     * Movie directory.
+     */
+    movieDirectory?: pulumi.Input<string>;
+    /**
+     * Movie imported category.
+     */
+    movieImportedCategory?: pulumi.Input<string>;
+    /**
      * Download Client name.
      */
     name: pulumi.Input<string>;
     /**
-     * Older Movie priority. `-100` Default, `-2` Paused, `-1` Low, `0` Normal, `1` High, `2` Force.
+     * Older Movie priority. `0` Last, `1` First.
      */
     olderMoviePriority?: pulumi.Input<number>;
     /**
@@ -295,7 +348,7 @@ export interface DownloadClientSabnzbdArgs {
      */
     priority?: pulumi.Input<number>;
     /**
-     * Recent Movie priority. `-100` Default, `-2` Paused, `-1` Low, `0` Normal, `1` High, `2` Force.
+     * Recent Movie priority. `0` Last, `1` First.
      */
     recentMoviePriority?: pulumi.Input<number>;
     /**
@@ -306,6 +359,10 @@ export interface DownloadClientSabnzbdArgs {
      * Remove failed downloads flag.
      */
     removeFailedDownloads?: pulumi.Input<boolean>;
+    /**
+     * Sequential order flag.
+     */
+    sequentialOrder?: pulumi.Input<boolean>;
     /**
      * List of associated tags.
      */

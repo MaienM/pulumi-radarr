@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * <!-- subcategory:Download Clients -->Download Client Freebox resource.
- * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Freebox](https://wiki.servarr.com/radarr/supported#torrentfreeboxdownload).
+ * <!-- subcategory:Download Clients -->Download Client Deluge resource.
+ * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Deluge](https://wiki.servarr.com/radarr/supported#deluge).
  *
  * ## Example Usage
  *
@@ -14,15 +14,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientFreebox("example", {
- *     apiUrl: "/api/v1/",
- *     appId: "freebox",
- *     appToken: "Token123",
+ * const example = new radarr.downloadclients.DownloadClientDeluge("example", {
  *     enable: true,
- *     host: "mafreebox.freebox.fr",
+ *     host: "deluge",
  *     name: "Example",
- *     port: 443,
+ *     port: 9091,
  *     priority: 1,
+ *     urlBase: "/deluge/",
  * });
  * ```
  *
@@ -31,12 +29,12 @@ import * as utilities from "../utilities";
  * import using the API/UI ID
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientFreebox:DownloadClientFreebox example 1
+ *  $ pulumi import radarr:DownloadClients/downloadClientDeluge:DownloadClientDeluge example 1
  * ```
  */
-export class DownloadClientFreebox extends pulumi.CustomResource {
+export class DownloadClientDeluge extends pulumi.CustomResource {
     /**
-     * Get an existing DownloadClientFreebox resource's state with the given name, ID, and optional extra
+     * Get an existing DownloadClientDeluge resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -44,48 +42,28 @@ export class DownloadClientFreebox extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientFreeboxState, opts?: pulumi.CustomResourceOptions): DownloadClientFreebox {
-        return new DownloadClientFreebox(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientDelugeState, opts?: pulumi.CustomResourceOptions): DownloadClientDeluge {
+        return new DownloadClientDeluge(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientFreebox:DownloadClientFreebox';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientDeluge:DownloadClientDeluge';
 
     /**
-     * Returns true if the given object is an instance of DownloadClientFreebox.  This is designed to work even
+     * Returns true if the given object is an instance of DownloadClientDeluge.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DownloadClientFreebox {
+    public static isInstance(obj: any): obj is DownloadClientDeluge {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DownloadClientFreebox.__pulumiType;
+        return obj['__pulumiType'] === DownloadClientDeluge.__pulumiType;
     }
 
     /**
      * Add paused flag.
      */
     public readonly addPaused!: pulumi.Output<boolean>;
-    /**
-     * API URL.
-     */
-    public readonly apiUrl!: pulumi.Output<string>;
-    /**
-     * App ID.
-     */
-    public readonly appId!: pulumi.Output<string>;
-    /**
-     * App Token.
-     */
-    public readonly appToken!: pulumi.Output<string>;
-    /**
-     * category.
-     */
-    public readonly category!: pulumi.Output<string>;
-    /**
-     * Movie directory.
-     */
-    public readonly destinationDirectory!: pulumi.Output<string>;
     /**
      * Enable flag.
      */
@@ -95,13 +73,29 @@ export class DownloadClientFreebox extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string>;
     /**
+     * Movie category.
+     */
+    public readonly movieCategory!: pulumi.Output<string>;
+    /**
+     * Movie directory.
+     */
+    public readonly movieDirectory!: pulumi.Output<string>;
+    /**
+     * Movie imported category.
+     */
+    public readonly movieImportedCategory!: pulumi.Output<string>;
+    /**
      * Download Client name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * Older Movie priority. `0` Last, `1` First.
      */
-    public readonly olderPriority!: pulumi.Output<number>;
+    public readonly olderMoviePriority!: pulumi.Output<number>;
+    /**
+     * Password.
+     */
+    public readonly password!: pulumi.Output<string>;
     /**
      * Port.
      */
@@ -113,7 +107,7 @@ export class DownloadClientFreebox extends pulumi.CustomResource {
     /**
      * Recent Movie priority. `0` Last, `1` First.
      */
-    public readonly recentPriority!: pulumi.Output<number>;
+    public readonly recentMoviePriority!: pulumi.Output<number>;
     /**
      * Remove completed downloads flag.
      */
@@ -127,113 +121,88 @@ export class DownloadClientFreebox extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<number[]>;
     /**
+     * Base URL.
+     */
+    public readonly urlBase!: pulumi.Output<string>;
+    /**
      * Use SSL flag.
      */
     public readonly useSsl!: pulumi.Output<boolean>;
+    /**
+     * Username.
+     */
+    public readonly username!: pulumi.Output<string>;
 
     /**
-     * Create a DownloadClientFreebox resource with the given unique name, arguments, and options.
+     * Create a DownloadClientDeluge resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DownloadClientFreeboxArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DownloadClientFreeboxArgs | DownloadClientFreeboxState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DownloadClientDelugeArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DownloadClientDelugeArgs | DownloadClientDelugeState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DownloadClientFreeboxState | undefined;
+            const state = argsOrState as DownloadClientDelugeState | undefined;
             resourceInputs["addPaused"] = state ? state.addPaused : undefined;
-            resourceInputs["apiUrl"] = state ? state.apiUrl : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["appToken"] = state ? state.appToken : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["destinationDirectory"] = state ? state.destinationDirectory : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["movieCategory"] = state ? state.movieCategory : undefined;
+            resourceInputs["movieDirectory"] = state ? state.movieDirectory : undefined;
+            resourceInputs["movieImportedCategory"] = state ? state.movieImportedCategory : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["olderPriority"] = state ? state.olderPriority : undefined;
+            resourceInputs["olderMoviePriority"] = state ? state.olderMoviePriority : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["recentPriority"] = state ? state.recentPriority : undefined;
+            resourceInputs["recentMoviePriority"] = state ? state.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = state ? state.removeCompletedDownloads : undefined;
             resourceInputs["removeFailedDownloads"] = state ? state.removeFailedDownloads : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["urlBase"] = state ? state.urlBase : undefined;
             resourceInputs["useSsl"] = state ? state.useSsl : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
-            const args = argsOrState as DownloadClientFreeboxArgs | undefined;
-            if ((!args || args.apiUrl === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apiUrl'");
-            }
-            if ((!args || args.appId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appId'");
-            }
-            if ((!args || args.appToken === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appToken'");
-            }
-            if ((!args || args.host === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'host'");
-            }
+            const args = argsOrState as DownloadClientDelugeArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'port'");
-            }
             resourceInputs["addPaused"] = args ? args.addPaused : undefined;
-            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["appToken"] = args?.appToken ? pulumi.secret(args.appToken) : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["destinationDirectory"] = args ? args.destinationDirectory : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["movieCategory"] = args ? args.movieCategory : undefined;
+            resourceInputs["movieDirectory"] = args ? args.movieDirectory : undefined;
+            resourceInputs["movieImportedCategory"] = args ? args.movieImportedCategory : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["olderPriority"] = args ? args.olderPriority : undefined;
+            resourceInputs["olderMoviePriority"] = args ? args.olderMoviePriority : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["recentPriority"] = args ? args.recentPriority : undefined;
+            resourceInputs["recentMoviePriority"] = args ? args.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = args ? args.removeCompletedDownloads : undefined;
             resourceInputs["removeFailedDownloads"] = args ? args.removeFailedDownloads : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["urlBase"] = args ? args.urlBase : undefined;
             resourceInputs["useSsl"] = args ? args.useSsl : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["appToken"] };
+        const secretOpts = { additionalSecretOutputs: ["password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DownloadClientFreebox.__pulumiType, name, resourceInputs, opts);
+        super(DownloadClientDeluge.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DownloadClientFreebox resources.
+ * Input properties used for looking up and filtering DownloadClientDeluge resources.
  */
-export interface DownloadClientFreeboxState {
+export interface DownloadClientDelugeState {
     /**
      * Add paused flag.
      */
     addPaused?: pulumi.Input<boolean>;
-    /**
-     * API URL.
-     */
-    apiUrl?: pulumi.Input<string>;
-    /**
-     * App ID.
-     */
-    appId?: pulumi.Input<string>;
-    /**
-     * App Token.
-     */
-    appToken?: pulumi.Input<string>;
-    /**
-     * category.
-     */
-    category?: pulumi.Input<string>;
-    /**
-     * Movie directory.
-     */
-    destinationDirectory?: pulumi.Input<string>;
     /**
      * Enable flag.
      */
@@ -243,13 +212,29 @@ export interface DownloadClientFreeboxState {
      */
     host?: pulumi.Input<string>;
     /**
+     * Movie category.
+     */
+    movieCategory?: pulumi.Input<string>;
+    /**
+     * Movie directory.
+     */
+    movieDirectory?: pulumi.Input<string>;
+    /**
+     * Movie imported category.
+     */
+    movieImportedCategory?: pulumi.Input<string>;
+    /**
      * Download Client name.
      */
     name?: pulumi.Input<string>;
     /**
      * Older Movie priority. `0` Last, `1` First.
      */
-    olderPriority?: pulumi.Input<number>;
+    olderMoviePriority?: pulumi.Input<number>;
+    /**
+     * Password.
+     */
+    password?: pulumi.Input<string>;
     /**
      * Port.
      */
@@ -261,7 +246,7 @@ export interface DownloadClientFreeboxState {
     /**
      * Recent Movie priority. `0` Last, `1` First.
      */
-    recentPriority?: pulumi.Input<number>;
+    recentMoviePriority?: pulumi.Input<number>;
     /**
      * Remove completed downloads flag.
      */
@@ -275,39 +260,27 @@ export interface DownloadClientFreeboxState {
      */
     tags?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * Base URL.
+     */
+    urlBase?: pulumi.Input<string>;
+    /**
      * Use SSL flag.
      */
     useSsl?: pulumi.Input<boolean>;
+    /**
+     * Username.
+     */
+    username?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a DownloadClientFreebox resource.
+ * The set of arguments for constructing a DownloadClientDeluge resource.
  */
-export interface DownloadClientFreeboxArgs {
+export interface DownloadClientDelugeArgs {
     /**
      * Add paused flag.
      */
     addPaused?: pulumi.Input<boolean>;
-    /**
-     * API URL.
-     */
-    apiUrl: pulumi.Input<string>;
-    /**
-     * App ID.
-     */
-    appId: pulumi.Input<string>;
-    /**
-     * App Token.
-     */
-    appToken: pulumi.Input<string>;
-    /**
-     * category.
-     */
-    category?: pulumi.Input<string>;
-    /**
-     * Movie directory.
-     */
-    destinationDirectory?: pulumi.Input<string>;
     /**
      * Enable flag.
      */
@@ -315,7 +288,19 @@ export interface DownloadClientFreeboxArgs {
     /**
      * host.
      */
-    host: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    /**
+     * Movie category.
+     */
+    movieCategory?: pulumi.Input<string>;
+    /**
+     * Movie directory.
+     */
+    movieDirectory?: pulumi.Input<string>;
+    /**
+     * Movie imported category.
+     */
+    movieImportedCategory?: pulumi.Input<string>;
     /**
      * Download Client name.
      */
@@ -323,11 +308,15 @@ export interface DownloadClientFreeboxArgs {
     /**
      * Older Movie priority. `0` Last, `1` First.
      */
-    olderPriority?: pulumi.Input<number>;
+    olderMoviePriority?: pulumi.Input<number>;
+    /**
+     * Password.
+     */
+    password?: pulumi.Input<string>;
     /**
      * Port.
      */
-    port: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * Priority.
      */
@@ -335,7 +324,7 @@ export interface DownloadClientFreeboxArgs {
     /**
      * Recent Movie priority. `0` Last, `1` First.
      */
-    recentPriority?: pulumi.Input<number>;
+    recentMoviePriority?: pulumi.Input<number>;
     /**
      * Remove completed downloads flag.
      */
@@ -349,7 +338,15 @@ export interface DownloadClientFreeboxArgs {
      */
     tags?: pulumi.Input<pulumi.Input<number>[]>;
     /**
+     * Base URL.
+     */
+    urlBase?: pulumi.Input<string>;
+    /**
      * Use SSL flag.
      */
     useSsl?: pulumi.Input<boolean>;
+    /**
+     * Username.
+     */
+    username?: pulumi.Input<string>;
 }

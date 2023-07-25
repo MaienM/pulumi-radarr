@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientUsenetBlackhole("example", {
+ * const example = new radarr.downloadclients.DownloadClientUsenetBlackhole("example", {
  *     enable: true,
  *     name: "Example",
  *     nzbFolder: "/nzb/",
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import using the API/UI ID
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientUsenetBlackhole:DownloadClientUsenetBlackhole example 1
+ *  $ pulumi import radarr:DownloadClients/downloadClientUsenetBlackhole:DownloadClientUsenetBlackhole example 1
  * ```
  */
 export class DownloadClientUsenetBlackhole extends pulumi.CustomResource {
@@ -46,7 +46,7 @@ export class DownloadClientUsenetBlackhole extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientUsenetBlackhole:DownloadClientUsenetBlackhole';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientUsenetBlackhole:DownloadClientUsenetBlackhole';
 
     /**
      * Returns true if the given object is an instance of DownloadClientUsenetBlackhole.  This is designed to work even

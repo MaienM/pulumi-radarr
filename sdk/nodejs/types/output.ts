@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export namespace DownloadClient {
+export namespace DownloadClients {
     export interface GetDownloadClientsDownloadClient {
         /**
          * Add paused flag.

@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * <!-- subcategory:Download Clients -->Download Client UsenetDownloadStation resource.
- * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [UsenetDownloadStation](https://wiki.servarr.com/radarr/supported#usenetdownloadstation).
+ * <!-- subcategory:Download Clients -->Download Client TorrentDownloadStation resource.
+ * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [TorrentDownloadStation](https://wiki.servarr.com/radarr/supported#torrentdownloadstation).
  *
  * ## Example Usage
  *
@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientUsenetDownloadStation("example", {
+ * const example = new radarr.downloadclients.DownloadClientTorrentDownloadStation("example", {
  *     enable: true,
  *     host: "downloadstation",
  *     name: "Example",
@@ -28,12 +28,12 @@ import * as utilities from "../utilities";
  * import using the API/UI ID
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientUsenetDownloadStation:DownloadClientUsenetDownloadStation example 1
+ *  $ pulumi import radarr:DownloadClients/downloadClientTorrentDownloadStation:DownloadClientTorrentDownloadStation example 1
  * ```
  */
-export class DownloadClientUsenetDownloadStation extends pulumi.CustomResource {
+export class DownloadClientTorrentDownloadStation extends pulumi.CustomResource {
     /**
-     * Get an existing DownloadClientUsenetDownloadStation resource's state with the given name, ID, and optional extra
+     * Get an existing DownloadClientTorrentDownloadStation resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -41,22 +41,22 @@ export class DownloadClientUsenetDownloadStation extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientUsenetDownloadStationState, opts?: pulumi.CustomResourceOptions): DownloadClientUsenetDownloadStation {
-        return new DownloadClientUsenetDownloadStation(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientTorrentDownloadStationState, opts?: pulumi.CustomResourceOptions): DownloadClientTorrentDownloadStation {
+        return new DownloadClientTorrentDownloadStation(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientUsenetDownloadStation:DownloadClientUsenetDownloadStation';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientTorrentDownloadStation:DownloadClientTorrentDownloadStation';
 
     /**
-     * Returns true if the given object is an instance of DownloadClientUsenetDownloadStation.  This is designed to work even
+     * Returns true if the given object is an instance of DownloadClientTorrentDownloadStation.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DownloadClientUsenetDownloadStation {
+    public static isInstance(obj: any): obj is DownloadClientTorrentDownloadStation {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DownloadClientUsenetDownloadStation.__pulumiType;
+        return obj['__pulumiType'] === DownloadClientTorrentDownloadStation.__pulumiType;
     }
 
     /**
@@ -113,18 +113,18 @@ export class DownloadClientUsenetDownloadStation extends pulumi.CustomResource {
     public readonly username!: pulumi.Output<string>;
 
     /**
-     * Create a DownloadClientUsenetDownloadStation resource with the given unique name, arguments, and options.
+     * Create a DownloadClientTorrentDownloadStation resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DownloadClientUsenetDownloadStationArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DownloadClientUsenetDownloadStationArgs | DownloadClientUsenetDownloadStationState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DownloadClientTorrentDownloadStationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DownloadClientTorrentDownloadStationArgs | DownloadClientTorrentDownloadStationState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DownloadClientUsenetDownloadStationState | undefined;
+            const state = argsOrState as DownloadClientTorrentDownloadStationState | undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["movieCategory"] = state ? state.movieCategory : undefined;
@@ -139,7 +139,7 @@ export class DownloadClientUsenetDownloadStation extends pulumi.CustomResource {
             resourceInputs["useSsl"] = state ? state.useSsl : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
-            const args = argsOrState as DownloadClientUsenetDownloadStationArgs | undefined;
+            const args = argsOrState as DownloadClientTorrentDownloadStationArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -160,14 +160,14 @@ export class DownloadClientUsenetDownloadStation extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DownloadClientUsenetDownloadStation.__pulumiType, name, resourceInputs, opts);
+        super(DownloadClientTorrentDownloadStation.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DownloadClientUsenetDownloadStation resources.
+ * Input properties used for looking up and filtering DownloadClientTorrentDownloadStation resources.
  */
-export interface DownloadClientUsenetDownloadStationState {
+export interface DownloadClientTorrentDownloadStationState {
     /**
      * Enable flag.
      */
@@ -223,9 +223,9 @@ export interface DownloadClientUsenetDownloadStationState {
 }
 
 /**
- * The set of arguments for constructing a DownloadClientUsenetDownloadStation resource.
+ * The set of arguments for constructing a DownloadClientTorrentDownloadStation resource.
  */
-export interface DownloadClientUsenetDownloadStationArgs {
+export interface DownloadClientTorrentDownloadStationArgs {
     /**
      * Enable flag.
      */

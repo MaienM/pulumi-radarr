@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientConfig("example", {
+ * const example = new radarr.downloadclients.DownloadClientConfig("example", {
  *     autoRedownloadFailed: false,
  *     checkForFinishedDownloadInterval: 1,
  *     enableCompletedDownloadHandling: true,
@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import does not need parameters
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientConfig:DownloadClientConfig example
+ *  $ pulumi import radarr:DownloadClients/downloadClientConfig:DownloadClientConfig example
  * ```
  */
 export class DownloadClientConfig extends pulumi.CustomResource {
@@ -44,7 +44,7 @@ export class DownloadClientConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientConfig:DownloadClientConfig';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientConfig:DownloadClientConfig';
 
     /**
      * Returns true if the given object is an instance of DownloadClientConfig.  This is designed to work even

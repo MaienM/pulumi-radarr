@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * <!-- subcategory:Download Clients -->Download Client uTorrent resource.
- * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [uTorrent](https://wiki.servarr.com/radarr/supported#utorrent).
+ * <!-- subcategory:Download Clients -->Download Client Flood resource.
+ * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Flood](https://wiki.servarr.com/radarr/supported#flood).
  *
  * ## Example Usage
  *
@@ -14,14 +14,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientUtorrent("example", {
+ * const example = new radarr.downloadclients.DownloadClientFlood("example", {
+ *     addPaused: true,
+ *     additionalTags: [
+ *         0,
+ *         1,
+ *     ],
  *     enable: true,
- *     host: "utorrent",
- *     movieCategory: "tv-radarr",
+ *     fieldTags: ["radarr"],
+ *     host: "flood",
  *     name: "Example",
  *     port: 9091,
  *     priority: 1,
- *     urlBase: "/utorrent/",
+ *     urlBase: "/flood/",
  * });
  * ```
  *
@@ -30,12 +35,12 @@ import * as utilities from "../utilities";
  * import using the API/UI ID
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientUtorrent:DownloadClientUtorrent example 1
+ *  $ pulumi import radarr:DownloadClients/downloadClientFlood:DownloadClientFlood example 1
  * ```
  */
-export class DownloadClientUtorrent extends pulumi.CustomResource {
+export class DownloadClientFlood extends pulumi.CustomResource {
     /**
-     * Get an existing DownloadClientUtorrent resource's state with the given name, ID, and optional extra
+     * Get an existing DownloadClientFlood resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -43,36 +48,48 @@ export class DownloadClientUtorrent extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientUtorrentState, opts?: pulumi.CustomResourceOptions): DownloadClientUtorrent {
-        return new DownloadClientUtorrent(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientFloodState, opts?: pulumi.CustomResourceOptions): DownloadClientFlood {
+        return new DownloadClientFlood(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientUtorrent:DownloadClientUtorrent';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientFlood:DownloadClientFlood';
 
     /**
-     * Returns true if the given object is an instance of DownloadClientUtorrent.  This is designed to work even
+     * Returns true if the given object is an instance of DownloadClientFlood.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DownloadClientUtorrent {
+    public static isInstance(obj: any): obj is DownloadClientFlood {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DownloadClientUtorrent.__pulumiType;
+        return obj['__pulumiType'] === DownloadClientFlood.__pulumiType;
     }
 
+    /**
+     * Add paused flag.
+     */
+    public readonly addPaused!: pulumi.Output<boolean>;
+    /**
+     * Additional tags, `0` TitleSlug, `1` Quality, `2` Language, `3` ReleaseGroup, `4` Year, `5` Indexer, `6` Network.
+     */
+    public readonly additionalTags!: pulumi.Output<number[]>;
+    /**
+     * Destination.
+     */
+    public readonly destination!: pulumi.Output<string>;
     /**
      * Enable flag.
      */
     public readonly enable!: pulumi.Output<boolean>;
     /**
+     * Field tags.
+     */
+    public readonly fieldTags!: pulumi.Output<string[]>;
+    /**
      * host.
      */
     public readonly host!: pulumi.Output<string>;
-    /**
-     * Initial state, with Stop support. `0` Start, `1` ForceStart, `2` Pause, `3` Stop.
-     */
-    public readonly intialState!: pulumi.Output<number>;
     /**
      * Movie category.
      */
@@ -81,10 +98,6 @@ export class DownloadClientUtorrent extends pulumi.CustomResource {
      * Movie directory.
      */
     public readonly movieDirectory!: pulumi.Output<string>;
-    /**
-     * Movie imported category.
-     */
-    public readonly movieImportedCategory!: pulumi.Output<string>;
     /**
      * Download Client name.
      */
@@ -101,6 +114,10 @@ export class DownloadClientUtorrent extends pulumi.CustomResource {
      * Port.
      */
     public readonly port!: pulumi.Output<number>;
+    /**
+     * Post import tags.
+     */
+    public readonly postImportTags!: pulumi.Output<string[]>;
     /**
      * Priority.
      */
@@ -135,28 +152,31 @@ export class DownloadClientUtorrent extends pulumi.CustomResource {
     public readonly username!: pulumi.Output<string>;
 
     /**
-     * Create a DownloadClientUtorrent resource with the given unique name, arguments, and options.
+     * Create a DownloadClientFlood resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DownloadClientUtorrentArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DownloadClientUtorrentArgs | DownloadClientUtorrentState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DownloadClientFloodArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DownloadClientFloodArgs | DownloadClientFloodState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DownloadClientUtorrentState | undefined;
+            const state = argsOrState as DownloadClientFloodState | undefined;
+            resourceInputs["addPaused"] = state ? state.addPaused : undefined;
+            resourceInputs["additionalTags"] = state ? state.additionalTags : undefined;
+            resourceInputs["destination"] = state ? state.destination : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["fieldTags"] = state ? state.fieldTags : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["intialState"] = state ? state.intialState : undefined;
             resourceInputs["movieCategory"] = state ? state.movieCategory : undefined;
             resourceInputs["movieDirectory"] = state ? state.movieDirectory : undefined;
-            resourceInputs["movieImportedCategory"] = state ? state.movieImportedCategory : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["olderMoviePriority"] = state ? state.olderMoviePriority : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["postImportTags"] = state ? state.postImportTags : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["recentMoviePriority"] = state ? state.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = state ? state.removeCompletedDownloads : undefined;
@@ -166,20 +186,23 @@ export class DownloadClientUtorrent extends pulumi.CustomResource {
             resourceInputs["useSsl"] = state ? state.useSsl : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
-            const args = argsOrState as DownloadClientUtorrentArgs | undefined;
+            const args = argsOrState as DownloadClientFloodArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            resourceInputs["addPaused"] = args ? args.addPaused : undefined;
+            resourceInputs["additionalTags"] = args ? args.additionalTags : undefined;
+            resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["fieldTags"] = args ? args.fieldTags : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["intialState"] = args ? args.intialState : undefined;
             resourceInputs["movieCategory"] = args ? args.movieCategory : undefined;
             resourceInputs["movieDirectory"] = args ? args.movieDirectory : undefined;
-            resourceInputs["movieImportedCategory"] = args ? args.movieImportedCategory : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["olderMoviePriority"] = args ? args.olderMoviePriority : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["postImportTags"] = args ? args.postImportTags : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["recentMoviePriority"] = args ? args.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = args ? args.removeCompletedDownloads : undefined;
@@ -192,26 +215,38 @@ export class DownloadClientUtorrent extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DownloadClientUtorrent.__pulumiType, name, resourceInputs, opts);
+        super(DownloadClientFlood.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DownloadClientUtorrent resources.
+ * Input properties used for looking up and filtering DownloadClientFlood resources.
  */
-export interface DownloadClientUtorrentState {
+export interface DownloadClientFloodState {
+    /**
+     * Add paused flag.
+     */
+    addPaused?: pulumi.Input<boolean>;
+    /**
+     * Additional tags, `0` TitleSlug, `1` Quality, `2` Language, `3` ReleaseGroup, `4` Year, `5` Indexer, `6` Network.
+     */
+    additionalTags?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Destination.
+     */
+    destination?: pulumi.Input<string>;
     /**
      * Enable flag.
      */
     enable?: pulumi.Input<boolean>;
     /**
+     * Field tags.
+     */
+    fieldTags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * host.
      */
     host?: pulumi.Input<string>;
-    /**
-     * Initial state, with Stop support. `0` Start, `1` ForceStart, `2` Pause, `3` Stop.
-     */
-    intialState?: pulumi.Input<number>;
     /**
      * Movie category.
      */
@@ -220,10 +255,6 @@ export interface DownloadClientUtorrentState {
      * Movie directory.
      */
     movieDirectory?: pulumi.Input<string>;
-    /**
-     * Movie imported category.
-     */
-    movieImportedCategory?: pulumi.Input<string>;
     /**
      * Download Client name.
      */
@@ -240,6 +271,10 @@ export interface DownloadClientUtorrentState {
      * Port.
      */
     port?: pulumi.Input<number>;
+    /**
+     * Post import tags.
+     */
+    postImportTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Priority.
      */
@@ -275,21 +310,33 @@ export interface DownloadClientUtorrentState {
 }
 
 /**
- * The set of arguments for constructing a DownloadClientUtorrent resource.
+ * The set of arguments for constructing a DownloadClientFlood resource.
  */
-export interface DownloadClientUtorrentArgs {
+export interface DownloadClientFloodArgs {
+    /**
+     * Add paused flag.
+     */
+    addPaused?: pulumi.Input<boolean>;
+    /**
+     * Additional tags, `0` TitleSlug, `1` Quality, `2` Language, `3` ReleaseGroup, `4` Year, `5` Indexer, `6` Network.
+     */
+    additionalTags?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Destination.
+     */
+    destination?: pulumi.Input<string>;
     /**
      * Enable flag.
      */
     enable?: pulumi.Input<boolean>;
     /**
+     * Field tags.
+     */
+    fieldTags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * host.
      */
     host?: pulumi.Input<string>;
-    /**
-     * Initial state, with Stop support. `0` Start, `1` ForceStart, `2` Pause, `3` Stop.
-     */
-    intialState?: pulumi.Input<number>;
     /**
      * Movie category.
      */
@@ -298,10 +345,6 @@ export interface DownloadClientUtorrentArgs {
      * Movie directory.
      */
     movieDirectory?: pulumi.Input<string>;
-    /**
-     * Movie imported category.
-     */
-    movieImportedCategory?: pulumi.Input<string>;
     /**
      * Download Client name.
      */
@@ -318,6 +361,10 @@ export interface DownloadClientUtorrentArgs {
      * Port.
      */
     port?: pulumi.Input<number>;
+    /**
+     * Post import tags.
+     */
+    postImportTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Priority.
      */

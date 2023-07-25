@@ -5,8 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * <!-- subcategory:Download Clients -->Download Client Flood resource.
- * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [Flood](https://wiki.servarr.com/radarr/supported#flood).
+ * <!-- subcategory:Download Clients -->Download Client NZBGet resource.
+ * For more information refer to [Download Client](https://wiki.servarr.com/radarr/settings#download-clients) and [NZBGet](https://wiki.servarr.com/radarr/supported#nzbget).
  *
  * ## Example Usage
  *
@@ -14,19 +14,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@maienm/pulumi-radarr";
  *
- * const example = new radarr.downloadclient.DownloadClientFlood("example", {
- *     addPaused: true,
- *     additionalTags: [
- *         0,
- *         1,
- *     ],
+ * const example = new radarr.downloadclients.DownloadClientNzbget("example", {
  *     enable: true,
- *     fieldTags: ["radarr"],
- *     host: "flood",
+ *     host: "nzbget",
  *     name: "Example",
- *     port: 9091,
+ *     port: 6789,
  *     priority: 1,
- *     urlBase: "/flood/",
+ *     urlBase: "/nzbget/",
  * });
  * ```
  *
@@ -35,12 +29,12 @@ import * as utilities from "../utilities";
  * import using the API/UI ID
  *
  * ```sh
- *  $ pulumi import radarr:DownloadClient/downloadClientFlood:DownloadClientFlood example 1
+ *  $ pulumi import radarr:DownloadClients/downloadClientNzbget:DownloadClientNzbget example 1
  * ```
  */
-export class DownloadClientFlood extends pulumi.CustomResource {
+export class DownloadClientNzbget extends pulumi.CustomResource {
     /**
-     * Get an existing DownloadClientFlood resource's state with the given name, ID, and optional extra
+     * Get an existing DownloadClientNzbget resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -48,22 +42,22 @@ export class DownloadClientFlood extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientFloodState, opts?: pulumi.CustomResourceOptions): DownloadClientFlood {
-        return new DownloadClientFlood(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DownloadClientNzbgetState, opts?: pulumi.CustomResourceOptions): DownloadClientNzbget {
+        return new DownloadClientNzbget(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'radarr:DownloadClient/downloadClientFlood:DownloadClientFlood';
+    public static readonly __pulumiType = 'radarr:DownloadClients/downloadClientNzbget:DownloadClientNzbget';
 
     /**
-     * Returns true if the given object is an instance of DownloadClientFlood.  This is designed to work even
+     * Returns true if the given object is an instance of DownloadClientNzbget.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DownloadClientFlood {
+    public static isInstance(obj: any): obj is DownloadClientNzbget {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DownloadClientFlood.__pulumiType;
+        return obj['__pulumiType'] === DownloadClientNzbget.__pulumiType;
     }
 
     /**
@@ -71,21 +65,9 @@ export class DownloadClientFlood extends pulumi.CustomResource {
      */
     public readonly addPaused!: pulumi.Output<boolean>;
     /**
-     * Additional tags, `0` TitleSlug, `1` Quality, `2` Language, `3` ReleaseGroup, `4` Year, `5` Indexer, `6` Network.
-     */
-    public readonly additionalTags!: pulumi.Output<number[]>;
-    /**
-     * Destination.
-     */
-    public readonly destination!: pulumi.Output<string>;
-    /**
      * Enable flag.
      */
     public readonly enable!: pulumi.Output<boolean>;
-    /**
-     * Field tags.
-     */
-    public readonly fieldTags!: pulumi.Output<string[]>;
     /**
      * host.
      */
@@ -95,15 +77,11 @@ export class DownloadClientFlood extends pulumi.CustomResource {
      */
     public readonly movieCategory!: pulumi.Output<string>;
     /**
-     * Movie directory.
-     */
-    public readonly movieDirectory!: pulumi.Output<string>;
-    /**
      * Download Client name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Older Movie priority. `0` Last, `1` First.
+     * Older Movie priority. `-100` VeryLow, `-50` Low, `0` Normal, `50` High, `100` VeryHigh, `900` Force.
      */
     public readonly olderMoviePriority!: pulumi.Output<number>;
     /**
@@ -115,15 +93,11 @@ export class DownloadClientFlood extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number>;
     /**
-     * Post import tags.
-     */
-    public readonly postImportTags!: pulumi.Output<string[]>;
-    /**
      * Priority.
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * Recent Movie priority. `0` Last, `1` First.
+     * Recent Movie priority. `-100` VeryLow, `-50` Low, `0` Normal, `50` High, `100` VeryHigh, `900` Force.
      */
     public readonly recentMoviePriority!: pulumi.Output<number>;
     /**
@@ -152,31 +126,26 @@ export class DownloadClientFlood extends pulumi.CustomResource {
     public readonly username!: pulumi.Output<string>;
 
     /**
-     * Create a DownloadClientFlood resource with the given unique name, arguments, and options.
+     * Create a DownloadClientNzbget resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DownloadClientFloodArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DownloadClientFloodArgs | DownloadClientFloodState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DownloadClientNzbgetArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DownloadClientNzbgetArgs | DownloadClientNzbgetState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DownloadClientFloodState | undefined;
+            const state = argsOrState as DownloadClientNzbgetState | undefined;
             resourceInputs["addPaused"] = state ? state.addPaused : undefined;
-            resourceInputs["additionalTags"] = state ? state.additionalTags : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
-            resourceInputs["fieldTags"] = state ? state.fieldTags : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["movieCategory"] = state ? state.movieCategory : undefined;
-            resourceInputs["movieDirectory"] = state ? state.movieDirectory : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["olderMoviePriority"] = state ? state.olderMoviePriority : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["postImportTags"] = state ? state.postImportTags : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["recentMoviePriority"] = state ? state.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = state ? state.removeCompletedDownloads : undefined;
@@ -186,23 +155,18 @@ export class DownloadClientFlood extends pulumi.CustomResource {
             resourceInputs["useSsl"] = state ? state.useSsl : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
-            const args = argsOrState as DownloadClientFloodArgs | undefined;
+            const args = argsOrState as DownloadClientNzbgetArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["addPaused"] = args ? args.addPaused : undefined;
-            resourceInputs["additionalTags"] = args ? args.additionalTags : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
-            resourceInputs["fieldTags"] = args ? args.fieldTags : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["movieCategory"] = args ? args.movieCategory : undefined;
-            resourceInputs["movieDirectory"] = args ? args.movieDirectory : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["olderMoviePriority"] = args ? args.olderMoviePriority : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["postImportTags"] = args ? args.postImportTags : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["recentMoviePriority"] = args ? args.recentMoviePriority : undefined;
             resourceInputs["removeCompletedDownloads"] = args ? args.removeCompletedDownloads : undefined;
@@ -215,34 +179,22 @@ export class DownloadClientFlood extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(DownloadClientFlood.__pulumiType, name, resourceInputs, opts);
+        super(DownloadClientNzbget.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DownloadClientFlood resources.
+ * Input properties used for looking up and filtering DownloadClientNzbget resources.
  */
-export interface DownloadClientFloodState {
+export interface DownloadClientNzbgetState {
     /**
      * Add paused flag.
      */
     addPaused?: pulumi.Input<boolean>;
     /**
-     * Additional tags, `0` TitleSlug, `1` Quality, `2` Language, `3` ReleaseGroup, `4` Year, `5` Indexer, `6` Network.
-     */
-    additionalTags?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * Destination.
-     */
-    destination?: pulumi.Input<string>;
-    /**
      * Enable flag.
      */
     enable?: pulumi.Input<boolean>;
-    /**
-     * Field tags.
-     */
-    fieldTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * host.
      */
@@ -252,15 +204,11 @@ export interface DownloadClientFloodState {
      */
     movieCategory?: pulumi.Input<string>;
     /**
-     * Movie directory.
-     */
-    movieDirectory?: pulumi.Input<string>;
-    /**
      * Download Client name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Older Movie priority. `0` Last, `1` First.
+     * Older Movie priority. `-100` VeryLow, `-50` Low, `0` Normal, `50` High, `100` VeryHigh, `900` Force.
      */
     olderMoviePriority?: pulumi.Input<number>;
     /**
@@ -272,15 +220,11 @@ export interface DownloadClientFloodState {
      */
     port?: pulumi.Input<number>;
     /**
-     * Post import tags.
-     */
-    postImportTags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Priority.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Recent Movie priority. `0` Last, `1` First.
+     * Recent Movie priority. `-100` VeryLow, `-50` Low, `0` Normal, `50` High, `100` VeryHigh, `900` Force.
      */
     recentMoviePriority?: pulumi.Input<number>;
     /**
@@ -310,29 +254,17 @@ export interface DownloadClientFloodState {
 }
 
 /**
- * The set of arguments for constructing a DownloadClientFlood resource.
+ * The set of arguments for constructing a DownloadClientNzbget resource.
  */
-export interface DownloadClientFloodArgs {
+export interface DownloadClientNzbgetArgs {
     /**
      * Add paused flag.
      */
     addPaused?: pulumi.Input<boolean>;
     /**
-     * Additional tags, `0` TitleSlug, `1` Quality, `2` Language, `3` ReleaseGroup, `4` Year, `5` Indexer, `6` Network.
-     */
-    additionalTags?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * Destination.
-     */
-    destination?: pulumi.Input<string>;
-    /**
      * Enable flag.
      */
     enable?: pulumi.Input<boolean>;
-    /**
-     * Field tags.
-     */
-    fieldTags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * host.
      */
@@ -342,15 +274,11 @@ export interface DownloadClientFloodArgs {
      */
     movieCategory?: pulumi.Input<string>;
     /**
-     * Movie directory.
-     */
-    movieDirectory?: pulumi.Input<string>;
-    /**
      * Download Client name.
      */
     name: pulumi.Input<string>;
     /**
-     * Older Movie priority. `0` Last, `1` First.
+     * Older Movie priority. `-100` VeryLow, `-50` Low, `0` Normal, `50` High, `100` VeryHigh, `900` Force.
      */
     olderMoviePriority?: pulumi.Input<number>;
     /**
@@ -362,15 +290,11 @@ export interface DownloadClientFloodArgs {
      */
     port?: pulumi.Input<number>;
     /**
-     * Post import tags.
-     */
-    postImportTags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Priority.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Recent Movie priority. `0` Last, `1` First.
+     * Recent Movie priority. `-100` VeryLow, `-50` Low, `0` Normal, `50` High, `100` VeryHigh, `900` Force.
      */
     recentMoviePriority?: pulumi.Input<number>;
     /**

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@pulumi/radarr";
  *
- * const example = radarr.DownloadClient.getRemotePathMapping({
+ * const example = radarr.DownloadClients.getRemotePathMapping({
  *     id: 1,
  * });
  * ```
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
 export function getRemotePathMapping(args: GetRemotePathMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetRemotePathMappingResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("radarr:DownloadClient/getRemotePathMapping:getRemotePathMapping", {
+    return pulumi.runtime.invoke("radarr:DownloadClients/getRemotePathMapping:getRemotePathMapping", {
         "id": args.id,
     }, opts);
 }
@@ -66,7 +66,7 @@ export interface GetRemotePathMappingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as radarr from "@pulumi/radarr";
  *
- * const example = radarr.DownloadClient.getRemotePathMapping({
+ * const example = radarr.DownloadClients.getRemotePathMapping({
  *     id: 1,
  * });
  * ```
