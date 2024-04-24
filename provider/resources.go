@@ -29,7 +29,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimprovider "github.com/devopsarr/terraform-provider-radarr/v2/shim"
+	shimprovider "github.com/devopsarr/terraform-provider-radarr/shim"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/MaienM/pulumi-radarr/provider/pkg/version"
 )
